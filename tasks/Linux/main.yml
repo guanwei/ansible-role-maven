@@ -24,7 +24,7 @@
     creates: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
   become: yes
 
-- name: Configure Maven settings
+- name: Copy Maven profile file
   template:
     src: maven.sh.j2
     dest: /etc/profile.d/maven.sh
