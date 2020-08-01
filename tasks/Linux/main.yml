@@ -29,4 +29,4 @@
     src: maven.sh.j2
     dest: /etc/profile.d/maven.sh
   become: true
-  when: maven_is_default_installation
+  when: maven_is_default_installation | bool
