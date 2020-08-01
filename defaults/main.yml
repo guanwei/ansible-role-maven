@@ -7,7 +7,7 @@ maven_file_name: apache-maven-{{ maven_version }}-bin.tar.gz
 # URL to download the Maven package from
 maven_download_url: "http://archive.apache.org/dist/maven/maven-{{ maven_version.split('.')[0] }}/{{ maven_version }}/binaries/{{ maven_file_name }}"
 
-# Base installation directory the Maven
+# Base Maven installation directory
 maven_install_dir: /opt/maven
 
 # If this is the default installation, /etc/profile.d/maven.sh will be set.
