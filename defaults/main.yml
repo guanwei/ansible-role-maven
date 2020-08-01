@@ -11,4 +11,4 @@ maven_download_url: "http://archive.apache.org/dist/maven/maven-{{ maven_version
 maven_install_dir: /opt/maven
 
 # If this is the default installation, /etc/profile.d/maven.sh will be set.
-maven_is_default_installation: yes
+maven_is_default_installation: false
