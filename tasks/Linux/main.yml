@@ -23,9 +23,10 @@
     dest: "{{ maven_install_dir }}"
     creates: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
   become: yes
-# - name: Copy Helm binary to '{{ maven_install_dir }}'
-#   copy:
-#     src: "/tmp/helm-{{ helm_version }}/{{ ansible_system | lower }}-{{ go_arch }}/helm"
-#     dest: "/usr/local/bin/helm"
-#     mode: "0755"
-#   become: true
+
+- name: Configure Maven settings
+  template:
+    src: maven.sh.j2
+    dest: /etc/profile.d/maven.sh
+  become: true
+  when: maven_is_default_installation

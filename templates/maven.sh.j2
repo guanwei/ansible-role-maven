@@ -1,0 +1,6 @@
+#jinja2: trim_blocks:False
+#
+# {{ ansible_managed }}
+#
+export M2_HOME={{ maven_install_dir }}/apache-maven-{{ maven_version }}
+export PATH=$PATH:$M2_HOME/bin
