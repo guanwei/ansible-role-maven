@@ -1,1 +1,31 @@
 ---
+- name: Download Maven package
+  get_url:
+    url: "{{ maven_download_url }}"
+    dest: "/tmp/{{ maven_file_name }}"
+  retries: 3
+  delay: 2
+  register: result
+  until: result is succeeded
+  delegate_to: localhost
+  become: false
+
+- name: Unpack Maven package
+  unarchive:
+    src: "/tmp/{{ maven_file_name }}"
+    dest: "{{ maven_install_dir }}"
+    creates: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
+  become: yes
+# - name: Create '{{ maven_install_dir }}' directory if it does not exist
+#   file:
+#     path: "{{ maven_install_dir }}"
+#     state: directory
+#     mode: "0755"
+#   become: true
+
+# - name: Copy Helm binary to '{{ maven_install_dir }}'
+#   copy:
+#     src: "/tmp/helm-{{ helm_version }}/{{ ansible_system | lower }}-{{ go_arch }}/helm"
+#     dest: "/usr/local/bin/helm"
+#     mode: "0755"
+#   become: true
