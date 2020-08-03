@@ -2,10 +2,10 @@
 # Maven version number
 maven_version: 3.6.3
 
-maven_file_name: apache-maven-{{ maven_version }}-bin.tar.gz
+maven_package_name: apache-maven-{{ maven_version }}-bin.tar.gz
 
 # URL to download the Maven package from
-maven_download_url: "http://archive.apache.org/dist/maven/maven-{{ maven_version.split('.')[0] }}/{{ maven_version }}/binaries/{{ maven_file_name }}"
+maven_download_url: "http://archive.apache.org/dist/maven/maven-{{ maven_version.split('.')[0] }}/{{ maven_version }}/binaries/{{ maven_package_name }}"
 
 # Base Maven installation directory
 maven_install_dir: /opt/maven

@@ -2,7 +2,7 @@
 - name: Download Maven package
   get_url:
     url: "{{ maven_download_url }}"
-    dest: "/tmp/{{ maven_file_name }}"
+    dest: "/tmp/{{ maven_package_name }}"
   retries: 3
   delay: 2
   register: result
@@ -19,7 +19,7 @@
 
 - name: Unpack Maven package
   unarchive:
-    src: "/tmp/{{ maven_file_name }}"
+    src: "/tmp/{{ maven_package_name }}"
     dest: "{{ maven_install_dir }}"
     creates: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
   become: yes

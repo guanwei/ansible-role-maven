@@ -8,6 +8,8 @@ None.
 
 ## Role Variables
 
+Available variables are listed below, along with default values (see `defaults/main.yml`):
+
 ```
 # Maven version number
 maven_version: 3.6.3
