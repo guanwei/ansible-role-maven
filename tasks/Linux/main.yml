@@ -1,6 +1,6 @@
 ---
 - name: Check Maven version is present
-  state:
+  stat:
     path: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvn"
   register: maven_present
 
