@@ -1,16 +1,29 @@
 ---
+- name: Create download directory
+  file:
+    dest: "{{ maven_download_dir }}"
+    state: directory
+    mode: "0755"
+
 - name: Download Maven package
   get_url:
-    url: "{{ maven_download_url }}"
-    dest: "/tmp/{{ maven_package_name }}"
+    url: "{{ maven_mirror }}/{{ maven_redis_filename }}"
+    dest: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
   retries: 3
   delay: 2
   register: result
   until: result is succeeded
-  delegate_to: localhost
-  become: false
 
-- name: Create Maven installation directory if it does not exist
+- name: Install unarchive module dependencies
+  apt:
+    name:
+      - tar
+      - unzip
+      - gzip
+    state: present
+  become: true
+
+- name: Create Maven installation directory
   file:
     path: "{{ maven_install_dir }}"
     state: directory
@@ -19,8 +32,9 @@
 
 - name: Unpack Maven package
   unarchive:
-    src: "/tmp/{{ maven_package_name }}"
+    src: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
     dest: "{{ maven_install_dir }}"
+    remote_src: true
     creates: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
   become: yes
 
