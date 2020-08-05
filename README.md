@@ -14,16 +14,17 @@ Available variables are listed below, along with default values (see `defaults/m
 # Maven version number
 maven_version: 3.6.3
 
-maven_file_name: apache-maven-{{ maven_version }}-bin.tar.gz
+# Mirror to download the Maven redistributable package from
+maven_mirror: "http://archive.apache.org/dist/maven/maven-{{ maven_version.split('.')[0] }}/{{ maven_version }}/binaries"
 
-# URL to download the Maven package from
-maven_download_url: "http://archive.apache.org/dist/maven/maven-{{ maven_version.split('.')[0] }}/{{ maven_version }}/binaries/{{ maven_file_name }}"
+# Directory to store files downloaded for Maven installation
+maven_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.ansible/tmp/downloads') }}"
 
 # Base Maven installation directory
-maven_install_dir: /opt/maven
+maven_install_dir: "/opt/maven"
 
 # If this is the default installation, /etc/profile.d/maven.sh will be set.
-maven_is_default_installation: yes
+maven_is_default_installation: false
 ```
 
 ## Dependencies
