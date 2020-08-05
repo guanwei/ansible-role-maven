@@ -5,6 +5,8 @@
   failed_when: no
   changed_when: no
 
+- debug: msg="{{ maven_version_check }}"
+
 - name: Install Maven
   include_tasks: install.yml
   when: maven_version_check.rc != 0
