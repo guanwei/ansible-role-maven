@@ -24,9 +24,9 @@ maven_redis_filename: "apache-maven-{{ maven_version }}-bin.zip"
 maven_is_default_installation: false
 ```
 
-`maven_download_dir` default is "%TEMP%/ansible/downloads" on Windows, "$HOME/.ansible/tmp/downloads" on Linux.
+`maven_download_dir` default is `%TEMP%/ansible/downloads` on Windows, `$HOME/.ansible/tmp/downloads` on Linux.
 
-`maven_install_dir` default is "C:/Maven" on Windows, "/opt/maven" on Linux.
+`maven_install_dir` default is `C:/Maven` on Windows, `/opt/maven` on Linux.
 
 ## Dependencies
 
