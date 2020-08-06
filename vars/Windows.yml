@@ -1,3 +1,6 @@
 ---
+# Directory to store files downloaded for Maven installation
+maven_download_dir: "{{ x_ansible_download_dir | default(ansible_env.USERPROFILE + '/.ansible/tmp/downloads') }}"
+
 # Base Maven installation directory
 maven_install_dir: "C:/maven"
