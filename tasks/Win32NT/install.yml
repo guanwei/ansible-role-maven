@@ -19,3 +19,18 @@
     src: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
     dest: "{{ maven_install_dir }}"
     creates: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
+
+- name: Set Maven environment
+  win_environment:
+    name: M2_HOME
+    value: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
+    level: machine
+    state: present
+
+- name: Add Maven to PATH
+  win_path:
+    name: PATH
+    elements:
+      - "{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin"
+    scope: machine
+    state: present
