@@ -1,1 +1,9 @@
 ---
+- name: Check Maven version is present
+  win_stat:
+    path: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvn"
+  register: maven_present
+
+- name: Install Maven
+  include_tasks: install.yml
+  when: not maven_present.stat.exists

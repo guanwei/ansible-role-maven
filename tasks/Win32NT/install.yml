@@ -1,0 +1,21 @@
+---
+- name: Create download directory
+  win_file:
+    dest: "{{ maven_download_dir }}"
+    state: directory
+
+- name: Download Maven package
+  win_get_url:
+    url: "{{ maven_mirror }}/{{ maven_redis_filename }}"
+    dest: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
+
+- name: Create Maven installation directory
+  win_file:
+    path: "{{ maven_install_dir }}"
+    state: directory
+
+- name: Unpack Maven package
+  win_unzip:
+    src: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
+    dest: "{{ maven_install_dir }}"
+    creates: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
