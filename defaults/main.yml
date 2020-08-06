@@ -8,8 +8,5 @@ maven_mirror: "http://archive.apache.org/dist/maven/maven-{{ maven_version.split
 # Filename of Maven redistributable package
 maven_redis_filename: "apache-maven-{{ maven_version }}-bin.zip"
 
-# Base Maven installation directory
-maven_install_dir: "/opt/maven"
-
 # If this is the default installation, /etc/profile.d/maven.sh will be set.
 maven_is_default_installation: false
