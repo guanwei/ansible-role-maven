@@ -48,3 +48,23 @@ playbook.yml
   roles:
     - maven
 ```
+
+You can install a specific version of Maven by specifying the `maven_version`:
+```
+- hosts: servers
+  roles:
+    - role: maven
+      maven_version: '3.3.9'
+```
+
+You can install the multiple versions of Maven by using this role more than once:
+```
+- hosts: servers
+  roles:
+    - role: maven
+      maven_version: '3.2.5'
+
+    - role: maven
+      maven_version: '3.3.9'
+      maven_is_default_installation: true
+```
